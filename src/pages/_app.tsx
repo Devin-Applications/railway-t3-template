@@ -20,12 +20,21 @@ function getBaseUrl() {
 }
 
 export default withTRPC<AppRouter>({
-  config() {
+  config({ ctx }) {
     return {
       transformer: superjson,
       links: [
         httpBatchLink({
           url: `${getBaseUrl()}/api/trpc`,
+          headers() {
+            if (ctx?.req) {
+              return {
+                ...ctx.req.headers,
+                'x-ssr': '1',
+              };
+            }
+            return {};
+          },
         }),
       ],
     };

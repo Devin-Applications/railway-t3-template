@@ -14,7 +14,7 @@ export default function ProductListing() {
     return <div>Failed to fetch products: {error.message}</div>;
   }
 
-  if (!products) {
+  if (!products || !Array.isArray(products)) {
     return <div>Unexpected data format: products is not an array</div>;
   }
 

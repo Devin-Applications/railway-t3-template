@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { api } from '~/trpc/react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 type Product = {
   id: number;
@@ -14,30 +14,18 @@ type Product = {
 export default function ProductDetails() {
   const router = useRouter();
   const { id } = router.query;
-  const [product, setProduct] = useState<Product | null>(null);
-  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (id) {
-      const fetchProduct = async () => {
-        try {
-          const response = await api.product.get.query({ id: Number(id) });
-          setProduct(response);
-        } catch (err) {
-          setError('Failed to fetch product details');
-        }
-      };
+  const { data: product, error, isLoading } = api.product.get.useQuery(
+    { id: Number(id) },
+    { enabled: !!id }
+  );
 
-      fetchProduct();
-    }
-  }, [id]);
-
-  if (!id) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <div>Failed to fetch product details: {error.message}</div>;
   }
 
   if (!product) {
