@@ -1,18 +1,25 @@
-import { useState, useEffect } from "react";
-import { api } from "~/trpc/react";
 import Link from "next/link";
+import { api } from "~/trpc/react";
+
+type Product = {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  createdAt: Date;
+  updatedAt: Date;
+};
 
 export default function ProductListing() {
-  const [products, setProducts] = useState([]);
+  const { data: products, error, isLoading } = api.product.getAll.useQuery();
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const response = await api.product.getAll();
-      setProducts(response);
-    };
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-    fetchProducts();
-  }, []);
+  if (error) {
+    return <div>Failed to fetch products: {error.message}</div>;
+  }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
@@ -21,7 +28,7 @@ export default function ProductListing() {
           Product <span className="text-[hsl(280,100%,70%)]">Listing</span>
         </h1>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-          {products.map((product) => (
+          {products?.map((product) => (
             <div
               key={product.id}
               className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
