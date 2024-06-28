@@ -1,15 +1,5 @@
 import { useRouter } from 'next/router';
 import { api } from '~/trpc/react';
-import { useState } from 'react';
-
-type Product = {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  createdAt: Date;
-  updatedAt: Date;
-};
 
 export default function ProductDetails() {
   const router = useRouter();
