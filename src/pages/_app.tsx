@@ -33,7 +33,7 @@ export default withTRPC<AppRouter>({
                 'x-ssr': '1',
               };
             }
-            return Promise.resolve({});
+            return {};
           },
         }),
       ],
