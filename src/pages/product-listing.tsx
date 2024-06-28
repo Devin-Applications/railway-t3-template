@@ -11,7 +11,9 @@ type Product = {
 };
 
 export default function ProductListing() {
-  const { data: products, error, isLoading } = api.product.getAll.useQuery<Product[]>();
+  const { data, error, isLoading } = api.product.getAll.useQuery<Product[]>();
+
+  const products: Product[] = Array.isArray(data) ? data : [];
 
   console.log("Fetched products:", products);
 
@@ -23,7 +25,7 @@ export default function ProductListing() {
     return <div>Failed to fetch products: {error.message}</div>;
   }
 
-  if (!products || products.length === 0) {
+  if (products.length === 0) {
     return <div>No products available</div>;
   }
 
