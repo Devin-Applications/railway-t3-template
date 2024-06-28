@@ -1,0 +1,17 @@
+version: "3.1"
+
+services:
+  db:
+    container_name: t3-db
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - t3-db-data:/var/lib/postgresql/data
+    # 5432 is often already taken
+    ports:
+      - 7654:5432
+
+volumes:
+  t3-db-data:
