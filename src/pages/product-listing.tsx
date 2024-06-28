@@ -13,6 +13,8 @@ type Product = {
 export default function ProductListing() {
   const { data, error, isLoading } = api.product.getAll.useQuery<Product[]>();
 
+  console.log("Fetched data:", data);
+
   const products: Product[] = Array.isArray(data) ? data : [];
 
   console.log("Fetched products:", products);
