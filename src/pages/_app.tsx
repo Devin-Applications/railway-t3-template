@@ -1,6 +1,6 @@
-import { AppProps } from 'next/app';
+import type { AppProps } from 'next/app';
 import { withTRPC } from '@trpc/next';
-import { AppRouter } from '~/server/api/root';
+import type { AppRouter } from '~/server/api/root';
 import { httpBatchLink } from '@trpc/client';
 import superjson from 'superjson';
 import '~/styles/globals.css';
