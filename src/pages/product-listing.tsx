@@ -1,15 +1,6 @@
 import Link from "next/link";
 import { api } from "~/trpc/react";
 
-type Product = {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  createdAt: Date;
-  updatedAt: Date;
-};
-
 export default function ProductListing() {
   const { data: products, error, isLoading } = api.product.getAll.useQuery();
 
@@ -21,7 +12,7 @@ export default function ProductListing() {
     return <div>Failed to fetch products: {error.message}</div>;
   }
 
-  if (!Array.isArray(products)) {
+  if (!products) {
     return <div>Unexpected data format: products is not an array</div>;
   }
 
