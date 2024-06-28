@@ -4,6 +4,8 @@ import { api } from "~/trpc/react";
 export default function ProductListing() {
   const { data: products, error, isLoading } = api.product.getAll.useQuery();
 
+  console.log("Fetched products:", products);
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
