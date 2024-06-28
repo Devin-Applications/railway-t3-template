@@ -6,7 +6,7 @@ import { z } from "zod";
 export const productRouter = createTRPCRouter({
   getAll: publicProcedure.query(async () => {
     const products: Product[] = await db.product.findMany();
-    console.log("Fetched products:", products);
+    console.log("Fetched products in getAll:", products);
     return products;
   }),
   get: publicProcedure
@@ -18,6 +18,7 @@ export const productRouter = createTRPCRouter({
       if (!product) {
         throw new Error("Product not found");
       }
+      console.log("Fetched product in get:", product);
       return product;
     }),
 });
