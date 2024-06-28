@@ -26,17 +26,24 @@ export default withTRPC<AppRouter>({
       links: [
         httpBatchLink({
           url: `${getBaseUrl()}/api/trpc`,
-          headers() {
+          async headers() {
             if (ctx?.req) {
               return {
                 ...ctx.req.headers,
                 'x-ssr': '1',
               };
             }
-            return {};
+            return Promise.resolve({});
           },
         }),
       ],
+      queryClientConfig: {
+        defaultOptions: {
+          queries: {
+            staleTime: 60 * 1000, // 1 minute
+          },
+        },
+      },
     };
   },
   ssr: false,
