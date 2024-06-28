@@ -15,7 +15,7 @@ export default function ProductListing() {
 
   console.log("Fetched data:", data);
 
-  const products: Product[] = data ?? [];
+  const products: Product[] = Array.isArray(data) ? data : [];
 
   console.log("Fetched products:", products);
 
