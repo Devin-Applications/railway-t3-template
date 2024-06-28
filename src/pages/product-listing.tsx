@@ -25,7 +25,7 @@ export default function ProductListing() {
           Product <span className="text-[hsl(280,100%,70%)]">Listing</span>
         </h1>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-          {products.map((product) => (
+          {Array.isArray(products) && products.map((product) => (
             <div
               key={product.id}
               className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
