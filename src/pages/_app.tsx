@@ -26,14 +26,13 @@ export default withTRPC<AppRouter>({
       links: [
         httpBatchLink({
           url: `${getBaseUrl()}/api/trpc`,
-          async headers() {
+          headers() {
+            const headers: Record<string, string> = {};
             if (ctx?.req) {
-              return {
-                ...ctx.req.headers,
-                'x-ssr': '1',
-              };
+              Object.assign(headers, ctx.req.headers);
+              headers['x-ssr'] = '1';
             }
-            return {};
+            return headers;
           },
         }),
       ],
@@ -44,6 +43,7 @@ export default withTRPC<AppRouter>({
           },
         },
       },
+      abortOnUnmount: false,
     };
   },
   ssr: false,
