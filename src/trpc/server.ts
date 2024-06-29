@@ -24,6 +24,6 @@ export const createApi = async () => {
   const context = await createContext();
   return createCaller({
     ...context,
-    session: context.session ?? null, // Ensure the session type matches the expected type
+    session: null, // Ensure the session type matches the expected type
   });
 };
