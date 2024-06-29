@@ -7,7 +7,10 @@ export default function ProductDetails() {
 
   const { data: product, error, isLoading } = api.product.get.useQuery(
     { id: Number(id) },
-    { enabled: !!id }
+    {
+      enabled: !!id,
+      queryKey: ['product.get', { id: Number(id) }],
+    }
   );
 
   if (isLoading) {
