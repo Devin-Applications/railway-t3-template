@@ -1,13 +1,19 @@
 import { postRouter } from "~/server/api/routers/post";
-import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
+import { createCallerFactory } from "~/server/api/trpc";
 import { productRouter } from "~/trpc/product";
+import { initTRPC } from '@trpc/server';
+import superjson from 'superjson';
 
 /**
  * This is the primary router for your server.
  *
  * All routers added in /api/routers should be manually added here.
  */
-export const appRouter = createTRPCRouter({
+export const t = initTRPC.create({
+  transformer: superjson,
+});
+
+export const appRouter = t.router({
   post: postRouter,
   product: productRouter,
 });
@@ -22,4 +28,4 @@ export type AppRouter = typeof appRouter;
  * const res = await trpc.post.all();
  *       ^? Post[]
  */
-export const createCaller = createCallerFactory(appRouter);
+export const createCaller = createCallerFactory<AppRouter>(appRouter);
