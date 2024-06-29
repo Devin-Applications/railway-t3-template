@@ -1,6 +1,7 @@
 import { postRouter } from "~/server/api/routers/post";
 import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
 import { productRouter } from "~/trpc/product";
+import { authRouter } from "~/server/api/routers/auth";
 import { initTRPC } from '@trpc/server';
 import superjson from 'superjson';
 
@@ -16,6 +17,7 @@ export const t = initTRPC.create({
 export const appRouter = createTRPCRouter({
   post: postRouter,
   product: productRouter,
+  auth: authRouter,
 });
 
 // export type definition of API
