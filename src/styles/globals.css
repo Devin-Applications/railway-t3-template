@@ -5,7 +5,7 @@
 /* Custom styles for product listing and details pages */
 .product-card {
   max-width: 20rem;
-  padding: 1rem;
+  padding: 1.5rem; /* Increased padding for more breathing room */
   border-radius: 0.75rem;
   background-color: rgba(255, 255, 255, 0.1);
   transition: background-color 0.3s ease;
@@ -21,7 +21,7 @@
 }
 
 .product-description {
-  font-size: 1.125rem;
+  font-size: 1.25rem; /* Increased font size for better readability */
 }
 
 .product-price {
@@ -31,7 +31,7 @@
 
 .product-link {
   display: inline-block;
-  padding: 0.75rem 2.5rem;
+  padding: 1rem 3rem; /* Increased padding for more prominence */
   border-radius: 9999px;
   background-color: rgba(255, 255, 255, 0.1);
   font-weight: 600;
@@ -41,4 +41,11 @@
 
 .product-link:hover {
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+.product-listing-container {
+  display: flex;
+  justify-content: center; /* Center the product cards on the page */
+  flex-wrap: wrap;
+  gap: 2rem;
 }
