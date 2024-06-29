@@ -26,7 +26,7 @@ export default withTRPC<AppRouter>({
       links: [
         httpBatchLink({
           url: `${getBaseUrl()}/api/trpc`,
-          async headers() {
+          headers() {
             const headers: Record<string, string> = {};
             if (ctx?.req) {
               Object.assign(headers, ctx.req.headers);
