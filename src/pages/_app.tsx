@@ -33,9 +33,9 @@ export default withTRPC<AppRouter>({
             }
             return headers;
           },
+          transformer: superjson,
         }),
       ],
-      transformer: superjson,
       queryClientConfig: {
         defaultOptions: {
           queries: {
