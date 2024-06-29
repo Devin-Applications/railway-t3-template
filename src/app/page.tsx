@@ -12,8 +12,12 @@ export default function Home() {
     setIsClient(true);
   }, []);
 
-  const { data: hello, isLoading: isHelloLoading } = isClient ? api.post.hello.useQuery({ text: "from tRPC" }) : { data: null, isLoading: true };
-  const { data: session } = isClient ? api.auth.getSession.useQuery() : { data: null };
+  const helloQuery = api.post.hello.useQuery({ text: "from tRPC" });
+  const sessionQuery = api.auth.getSession.useQuery();
+
+  const hello = isClient ? helloQuery.data : null;
+  const isHelloLoading = isClient ? helloQuery.isLoading : true;
+  const session = isClient ? sessionQuery.data : null;
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
@@ -76,10 +80,14 @@ function CrudShowcase() {
     setIsClient(true);
   }, []);
 
-  const { data: session } = isClient ? api.auth.getSession.useQuery() : { data: null };
+  const sessionQuery = api.auth.getSession.useQuery();
+  const session = isClient ? sessionQuery.data : null;
+
   if (!session?.user) return null;
 
-  const { data: latestPost, isLoading: isLatestPostLoading } = isClient ? api.post.getLatest.useQuery() : { data: null, isLoading: true };
+  const latestPostQuery = api.post.getLatest.useQuery();
+  const latestPost = isClient ? latestPostQuery.data : null;
+  const isLatestPostLoading = isClient ? latestPostQuery.isLoading : true;
 
   return (
     <div className="w-full max-w-xs">
