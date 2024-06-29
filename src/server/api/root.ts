@@ -1,5 +1,5 @@
 import { postRouter } from "~/server/api/routers/post";
-import { createCallerFactory } from "~/server/api/trpc";
+import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
 import { productRouter } from "~/trpc/product";
 import { initTRPC } from '@trpc/server';
 import superjson from 'superjson';
