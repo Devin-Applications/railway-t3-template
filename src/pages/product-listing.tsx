@@ -41,14 +41,14 @@ export default function ProductListing() {
           {products.map((product: Product) => (
             <div
               key={product.id}
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
+              className="product-card"
             >
-              <h3 className="text-2xl font-bold">{product.name}</h3>
-              <p className="text-lg">{product.description}</p>
-              <p className="text-lg font-semibold">Price: ${product.price.toFixed(2)}</p>
+              <h3 className="product-title">{product.name}</h3>
+              <p className="product-description">{product.description}</p>
+              <p className="product-price">Price: ${product.price.toFixed(2)}</p>
               <Link
                 href={`/product/${product.id}`}
-                className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
+                className="product-link"
               >
                 View Details
               </Link>

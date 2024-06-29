@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom styles for product listing and details pages */
+.product-card {
+  max-width: 20rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.product-card:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.product-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.product-description {
+  font-size: 1.125rem;
+}
+
+.product-price {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.product-link {
+  display: inline-block;
+  padding: 0.75rem 2.5rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.product-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
