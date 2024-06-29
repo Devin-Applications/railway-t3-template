@@ -28,4 +28,4 @@ export type AppRouter = typeof appRouter;
  * const res = await trpc.post.all();
  *       ^? Post[]
  */
-export const createCaller = createCallerFactory(appRouter._def);
+export const createCaller = createCallerFactory(appRouter);
