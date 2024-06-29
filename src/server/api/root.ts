@@ -13,7 +13,7 @@ export const t = initTRPC.create({
   transformer: superjson,
 });
 
-export const appRouter = t.router({
+export const appRouter = createTRPCRouter({
   post: postRouter,
   product: productRouter,
 });
@@ -28,4 +28,4 @@ export type AppRouter = typeof appRouter;
  * const res = await trpc.post.all();
  *       ^? Post[]
  */
-export const createCaller = createCallerFactory(appRouter);
+export const createCaller = createCallerFactory(appRouter._def);
