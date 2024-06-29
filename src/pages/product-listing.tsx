@@ -45,6 +45,7 @@ export default function ProductListing() {
             >
               <h3 className="text-2xl font-bold">{product.name}</h3>
               <p className="text-lg">{product.description}</p>
+              <p className="text-lg font-semibold">Price: ${product.price.toFixed(2)}</p>
               <Link
                 href={`/product/${product.id}`}
                 className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
