@@ -29,7 +29,7 @@ export default withTRPC<AppRouter>({
           headers() {
             const headers: Record<string, string> = {};
             if (ctx?.req) {
-              Object.assign(headers, ctx.req.headers);
+              Object.assign(headers, ctx.req.headers as Record<string, string>);
               headers['x-ssr'] = '1';
             }
             return headers;
