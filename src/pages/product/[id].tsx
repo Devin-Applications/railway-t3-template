@@ -30,12 +30,12 @@ export default function ProductDetails() {
       <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
         Product <span className="text-[hsl(280,100%,70%)]">Details</span>
       </h1>
-      <div className="max-w-md p-4 bg-white/10 rounded-xl">
-        <h2 className="text-2xl font-bold">{product.name}</h2>
-        <p className="mt-2">{product.description}</p>
-        <p className="mt-2 text-lg font-semibold">Price: ${product.price}</p>
-        <p className="mt-2 text-sm">Created at: {new Date(product.createdAt).toLocaleDateString()}</p>
-        <p className="mt-2 text-sm">Updated at: {new Date(product.updatedAt).toLocaleDateString()}</p>
+      <div className="product-details-container">
+        <h2 className="product-title">{product.name}</h2>
+        <p className="product-description">{product.description}</p>
+        <p className="product-price">Price: ${product.price}</p>
+        <p className="product-timestamp">Created at: {new Date(product.createdAt).toLocaleDateString()}</p>
+        <p className="product-timestamp">Updated at: {new Date(product.updatedAt).toLocaleDateString()}</p>
       </div>
     </main>
   );
